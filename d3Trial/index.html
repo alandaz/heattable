@@ -87,7 +87,7 @@ d3.json(url, (data) => {
         .attr("ry", 4)
       //.attr('class','bar')
       .attr('x', (d) => x(new Date(d.year, 0)))
-      .attr('width', ((width / data.monthlyVariance.length) + 40/20 ))
+      .attr('width', ((width / data.monthlyVariance.length) + 40/ 20 ))
       .attr('y', (d) => y(d.month))
       .attr('height', height/15 )
       .attr('fill', (d) => colorScale(d.variance))
