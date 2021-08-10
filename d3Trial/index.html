@@ -9,19 +9,29 @@
 </head>
 
 <body>
-	<script src="main.js">
+	<script src="main.py">
 	</script>
 	<script src="https://d3js.org/d3.v4.min.js">
 	</script>
 	<script src="colorbrewer.min.js">
+
+    
 	</script>
+
+  <select name ="timeOptions" id = "timeOptions" >
+    <option value = "daily"> Daily </option>
+    <option value = "weekly"> Weekly </option>
+    <option value = "monthly"> Monthly</option>
+    <option value = "yearly"> Yearly</option>
+  </select>
 
     <svg id = 'chart'></svg>
 
     <script>
 
-    const url = 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json',
-  months = ['plugin1', 'plugin2', 'plugin3', 'plugin4', 'plugin5', 'plugin6', 'plugin7', 'plugin8', 'plugin9', 'plugin10', 'plugin11', 'plugin12'],
+    //const url = 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json',
+    const url = 'index.ndjson',
+  months = ['plugin1', 'plugin2', 'plugin3', 'plugin4', 'plugin5', 'plugin6', 'plugin7'],
   colors = ['#134504', '#23690e','#38961b','#42ad21','#4ac225','#59db30','#68eb3f','#98f57a', '#bcf7a8', '#fbfcfa'],
   margin = {top: 100,right: 20,bottom: 100,left: 60},
   width = 1000,
@@ -62,14 +72,14 @@ chart.append('g')
   .attr('text-anchor','end')
   .text((d) => `${d}`);
 
-d3.json(url, (data) => {
+d3.json('index.ndjson', (data) => {
 
-    const date = (year) => new Date(Date.parse(year));
+    const date = (daily) => new Date(Date.parse(daily));
 
-    x.domain([date(data.monthlyVariance[0].year), date(data.monthlyVariance[data.monthlyVariance.length - 1].year)]);
+    x.domain([date(data.monthlyVariance[0].daily), date(data.monthlyVariance[data.monthlyVariance.length - 1].daily)]);
     y.domain([0,12]);
 
-    const xTicks = x.ticks().concat(new Date(data.monthlyVariance[data.monthlyVariance.length - 1].year, 0));
+    const xTicks = x.ticks().concat(new Date(data.monthlyVariance[data.monthlyVariance.length - 1].daily, 0));
   
     chart.append('g')
       .attr('transform', `translate(0,${height})`)
@@ -86,7 +96,7 @@ d3.json(url, (data) => {
         .attr("rx", 4)
         .attr("ry", 4)
       //.attr('class','bar')
-      .attr('x', (d) => x(new Date(d.year, 0)))
+      .attr('x', (d) => x(new Date(d.daily, 0)))
       .attr('width', ((width / data.monthlyVariance.length) + 40/ 20 ))
       .attr('y', (d) => y(d.month))
       .attr('height', height/15 )
@@ -95,7 +105,7 @@ d3.json(url, (data) => {
         tooltip.transition()
           .duration(100)		
           .style('opacity', .9);
-        tooltip.text(`${months[months.length - d.month]} ${d.year} ${d.variance.toFixed(3)}°C`)
+        tooltip.text(`${months[months.length - d.month]} ${d.daily} ${d.variance.toFixed(3)}°C`)
           .style('left', `${d3.event.pageX - 55}px`)	
           .style('top', `${d3.event.pageY - 40}px`);
       })
