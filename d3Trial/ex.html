@@ -38,13 +38,15 @@
             "translate(" + margin.left + "," + margin.top + ")");
     
     //Read the data
-    d3.json("https://raw.githubusercontent.com/alandaz/heattable/main/d3Trial/index.json", function(data) {
-
-    //https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv\
+    d3.json("https://raw.githubusercontent.com/alandaz/heattable/main/d3Trial/items.json", function(data) {
+        //"https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv"
+    //\
 
       // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
-      var myGroups = d3.map(data, function(d){return d.name;}).keys()
-      var myVars = d3.map(data, function(d){return d.date;}).keys()
+      var myGroups = d3.map(data, function(d){return d.nodeid;}).keys()
+      console.log(myGroups)
+      var myVars = d3.map(data, function(d){return d.nodeid.date;}).keys()
+      console.log(myVars)
     
       // Build X scales and axis:
       var x = d3.scaleBand()
