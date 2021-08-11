@@ -47,12 +47,15 @@
         .range([ height, 0 ])
         .padding(0.05);
 
+        const name = ['env.raingauge.acc', 'env.raingauge.event_acc', 'env.raingauge.total_acc', 'iio.in_humidityrelative_input', 'iio.in_pressure_input', 'iio.in_resistance_input', 'iio.in_temp_input', 'env.count..handbag', 'env.count..person', 'env.count..airplane', 'env.count..sports ball', 'env.count..parking meter', 'env.coverage.cloud', 'env.count..cow', 'env.count..giraffe', 'env.count..traffic light', 'env.count..clock']
+
     //Read the data
     //https://raw.githubusercontent.com/alandaz/heattable/main/d3Trial/items.json
     var url = "https://raw.githubusercontent.com/alandaz/heattable/main/d3Trial/index.ndjson"
     d3.json("https://raw.githubusercontent.com/alandaz/heattable/main/d3Trial/items.json", function(data) {
         //"https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv"
     //
+    
 
       // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
 
@@ -61,16 +64,18 @@
         //  d.name = +d.name;
       //});
       
-     
-      var myGroups = d3.map(data, function(d){return d.name;}).keys()
-      console.log(myGroups)
+     var grabKeys = Object.keys('items.json')
+      //var myGroups = d3.map(data, function(d){return d.name;})
+
+      console.log(grabKeys)
       //var myVars =  = d3.timeParse("%H:%M:%S")
       //var x = d3.scaleTime()  
   //.domain([new Date(0,0,0), new Date (12,59,59)])
  // .range([ 0, width ]);
       
-      d3.map(data, function(d){return d.date;}).values()
-      console.log(myVars)
+      //d3.map(data, function(d){return d.date;}).values()
+     // console.log(myVars)
+
       var xAxis = d3.axisBottom(x)
         .tickFormat(d3.timeFormat())
     

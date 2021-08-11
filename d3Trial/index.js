@@ -1,7 +1,7 @@
 getData(); 
 
         async function getData() {
-            const response = await fetch('test.csv');
+            const response = await fetch('items.json');
             const data = await response.text(); 
             console.log(data); 
 
