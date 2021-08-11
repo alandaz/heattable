@@ -8,7 +8,7 @@
 
 </head>
 
-<body>
+<body>    
 	<script src="main.py">
 	</script>
 	<script src="https://d3js.org/d3.v4.min.js">
@@ -28,10 +28,11 @@
     <svg id = 'chart'></svg>
 
     <script>
+      //var url = "https://raw.githubusercontent.com/alandaz/heattable/main/d3Trial/items.json"
+   //d3.json("https://raw.githubusercontent.com/alandaz/heattable/main/d3Trial/index.ndjson"
 
-    //const url = 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json',
-    const url = 'index.ndjson',
-  months = ['plugin1', 'plugin2', 'plugin3', 'plugin4', 'plugin5', 'plugin6', 'plugin7'],
+    //const url = '',
+  months = ['env.raingauge.acc', 'env.raingauge.event_acc', 'env.raingauge.total_acc', 'iio.in_humidityrelative_input', 'iio.in_pressure_input', 'iio.in_resistance_input', 'iio.in_temp_input'],
   colors = ['#134504', '#23690e','#38961b','#42ad21','#4ac225','#59db30','#68eb3f','#98f57a', '#bcf7a8', '#fbfcfa'],
   margin = {top: 100,right: 20,bottom: 100,left: 60},
   width = 1000,
@@ -72,7 +73,7 @@ chart.append('g')
   .attr('text-anchor','end')
   .text((d) => `${d}`);
 
-d3.json('index.ndjson', (data) => {
+d3.json("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json", (data) => {
 
     const date = (daily) => new Date(Date.parse(daily));
 

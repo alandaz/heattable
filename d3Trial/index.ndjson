@@ -1,4 +1,6 @@
-{"key":{"date":"2021-06-16","name":"env.raingauge.acc","node":"000048b02d05a1c7","plugin":"plugin-raingauge:0.1.1"},"offset":0,"size":21922}
+
+"thedata" : [
+{"key":["date":"2021-06-16","name":"env.raingauge.acc","node":"000048b02d05a1c7","plugin":"plugin-raingauge:0.1.1"],"offset":0,"size":21922}
 {"key":{"date":"2021-06-16","name":"env.raingauge.acc","node":"000048b02d15bc42","plugin":"plugin-raingauge:0.1.1"},"offset":21922,"size":21971}
 {"key":{"date":"2021-06-16","name":"env.raingauge.acc","node":"000048b02d15bc4c","plugin":"plugin-raingauge:0.1.1"},"offset":43893,"size":22072}
 {"key":{"date":"2021-06-16","name":"env.raingauge.acc","node":"000048b02d15bc64","plugin":"plugin-raingauge:0.1.1"},"offset":65965,"size":21991}
@@ -3510,3 +3512,4 @@
 {"key":{"date":"2021-07-16","name":"iio.in_temp_input","node":"000048b02d15bdcd","plugin":"plugin-metsense:0.1.1","sensor":"bme680"},"offset":84496262,"size":21204}
 {"key":{"date":"2021-07-16","name":"iio.in_temp_input","node":"000048b02d15c319","plugin":"plugin-metsense:0.1.1","sensor":"bme680"},"offset":84517466,"size":23068}
 {"key":{"date":"2021-07-16","name":"iio.in_temp_input","node":"000048b02d15c31f","plugin":"plugin-metsense:0.1.1","sensor":"bme680"},"offset":84540534,"size":20927}
+]
