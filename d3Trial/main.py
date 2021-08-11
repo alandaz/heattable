@@ -52,18 +52,8 @@ def item_matches_patterns(item, patterns):
 
 selected_items = [item for item in index if item_matches_patterns(item, patterns)]
 
-
-
-#agg_dict = {}
-#for item in list_of_data:
-  #  if item["name"] in agg_dict:
-       # count = agg_dict[item]["name"] += 1
-    #else:
-      #  count = agg_dict[item]["name"] = 0
-
-#print(agg_dict)
       
-'''with Path(args.root, "data.ndjson.gz").open("rb") as f:
+with Path(args.root, "data.ndjson.gz").open("rb") as f:
     data_string = ""
     for item in selected_items:
         f.seek(item["offset"])
@@ -71,38 +61,9 @@ selected_items = [item for item in index if item_matches_patterns(item, patterns
         sys.stdout.write(gzip.decompress(data).decode())
         data_string = data_string + gzip.decompress(data).decode()
         
-count = 0
-for item in list_of_data:
-    if not None:
-        count += 1
-    else:
-        count += 0
-#return count
 
-count2 = 0
-for x in list_of_data:
-    if not None:
-        count2 += 1
-    else:
-        count2 += 0
-#return count2
-
-count_dict = {"plugin_name": "env.raingauge.acc",
-              "value1": count
-                  },
-{"plugin_name": "env.raingauge.rint",
- "value2": count2
- }
-#print(count_dict.get("value1"))
-#print(count2)
-
-'''
 
 #{'key': {'date': '2021-06-16', 'name': 'iio.in_humidityrelative_input', 'node': '000048b02d15bc72', 'plugin': 'plugin-metsense:0.1.1', 'sensor': 'bme680'}, 'offset': 1548244, 'size': 29981}
-
-
-
-
 
 def aggregate_data():
     agg_dict = {}

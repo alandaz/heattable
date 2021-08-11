@@ -1,4 +1,16 @@
-<meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heat Table</title>
+
+</head>
+<body>
+    
+</body>
+</html><meta charset="utf-8">
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
@@ -26,13 +38,13 @@
             "translate(" + margin.left + "," + margin.top + ")");
     
     //Read the data
-    d3.json(index.json, function(data) {
-        
+    d3.json("https://raw.githubusercontent.com/alandaz/heattable/main/d3Trial/index.json", function(data) {
+
     //https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv\
 
       // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
-      var myGroups = d3.map(data, function(d){return d.group;}).keys()
-      var myVars = d3.map(data, function(d){return d.variable;}).keys()
+      var myGroups = d3.map(data, function(d){return d.name;}).keys()
+      var myVars = d3.map(data, function(d){return d.date;}).keys()
     
       // Build X scales and axis:
       var x = d3.scaleBand()
@@ -81,7 +93,7 @@
       }
       var mousemove = function(d) {
         tooltip
-          .html("The exact value of<br>this cell is: " + d.value)
+          .html("The exact value of<br>this cell is: " + d.size)
           .style("left", (d3.mouse(this)[0]+70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
       }
@@ -95,16 +107,16 @@
     
       // add the squares
       svg.selectAll()
-        .data(data, function(d) {return d.group+':'+d.variable;})
+        .data(data, function(d) {return d.name+':'+d.date;})
         .enter()
         .append("rect")
-          .attr("x", function(d) { return x(d.group) })
-          .attr("y", function(d) { return y(d.variable) })
+          .attr("x", function(d) { return x(d.name) })
+          .attr("y", function(d) { return y(d.date) })
           .attr("rx", 4)
           .attr("ry", 4)
           .attr("width", x.bandwidth() )
           .attr("height", y.bandwidth() )
-          .style("fill", function(d) { return myColor(d.value)} )
+          .style("fill", function(d) { return myColor(d.size)} )
           .style("stroke-width", 4)
           .style("stroke", "none")
           .style("opacity", 0.8)
